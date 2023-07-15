@@ -1,0 +1,15 @@
+version: '3'
+networks:
+  yolo:
+    driver:bridge
+services:
+
+  mongodb:
+    image: mongo:latest
+    networks:
+      - yolo
+    volumes:
+      -mongodb_data:/data/db
+
+  
+
