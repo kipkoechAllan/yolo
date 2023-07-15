@@ -11,5 +11,19 @@ services:
     volumes:
       -mongodb_data:/data/db
 
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    networks:
+      - yolo
+    ports:
+      - 3001:3001
+    depends_on:
+      - mongodb
+
+  
+
+
   
 
