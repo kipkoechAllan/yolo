@@ -22,7 +22,17 @@ services:
     depends_on:
       - mongodb
 
-  
+  client:
+    build: 
+      context: .
+      dockerfile: ./client/Dockerfile
+    networks:
+      - yolo
+    ports:
+      -3000:3000
+    depends_on:
+      - backend
+
 
 
   
