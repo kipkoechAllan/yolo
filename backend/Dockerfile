@@ -6,17 +6,17 @@
 
 #copying the package.json and lock file
 
-COPY backend/package*.json ./
+COPY backend/package*.json .
 
 #Installing the dependencies
-RUN npm ci
+RUN npm install
 
 #copying the rest of the files
 
 COPY backend .
 
 #Exposing the port
-EXPOSE 3001
+EXPOSE 5000
 
 #Starting the server
  CMD [ "npm", "start" ]

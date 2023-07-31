@@ -1,0 +1,31 @@
+---
+- name: Provision Vagrant VM and Set up Docker Containers
+  hosts: vagrant
+  become: true
+  tasks:
+    - include_role:
+        name: common
+      tags:
+        - common
+
+    - include_role:
+        name: mongodb
+      tags:
+        - mongodb
+
+    - include_role:
+        name: backend
+      tags:
+        - backend
+
+    - include_role:
+        name: frontend
+      tags:
+        - frontend
+
+    - name: Run Docker Compose
+      command: docker-compose up -d
+      args:
+        chdir: /vagrant
+      tags:
+        - docker-compose

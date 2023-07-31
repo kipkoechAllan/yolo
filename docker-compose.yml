@@ -4,6 +4,8 @@ services:
 
   mongodb:
     image: mongo:latest
+    ports:
+      - 27017:27017
     networks:
       - yolo
     volumes:
@@ -11,12 +13,18 @@ services:
 
   backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: ./backend/Dockerfile
     networks:
       - yolo
     ports:
-      - 3001:3001
+      - 5000:5000
+    environment:
+        PORT : 5000
+        MONGODB_URI: mongodb://mongodb_data:27017
+        DB_NAME: yolomy
+        NAME: truyolo
+
     depends_on:
       - mongodb
 
@@ -36,6 +44,7 @@ volumes:
 
 networks:
   yolo:
+    driver : bridge
 
 
 
