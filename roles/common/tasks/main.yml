@@ -1,10 +1,16 @@
 ---
-- name: Install Docker and Docker Compose
+- name: Install required packages
   apt:
     name: "{{ item }}"
     state: present
   with_items:
-    - docker.io
-    - python3-pip
+    - git
   tags:
-    - mongodb
+    - common
+
+- name: Install Docker Compose
+  pip:
+    name: docker-compose
+    state: present
+  tags:
+    - common
