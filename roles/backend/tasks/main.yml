@@ -1,0 +1,13 @@
+---
+- name: Copy backend Dockerfile
+  copy:
+    src: /backend/Dockerfile
+    dest: /vagrant/backend/Dockerfile
+  tags:
+    - backend
+
+- name: Build backend
+  command: docker build -t backend_image /vagrant/backend
+  tags:
+    - backend
+

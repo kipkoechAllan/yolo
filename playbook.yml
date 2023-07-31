@@ -1,5 +1,5 @@
 ---
-- name: Provision Vagrant VM and Set up Docker Containers
+- name: Provision Vagrant VM and Setting up Docker Containers
   hosts: vagrant
   become: true
   tasks:
@@ -19,9 +19,9 @@
         - backend
 
     - include_role:
-        name: frontend
+        name: client
       tags:
-        - frontend
+        - client
 
     - name: Run Docker Compose
       command: docker-compose up -d

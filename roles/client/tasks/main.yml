@@ -1,0 +1,12 @@
+---
+- name: Clone frontend code from GitHub
+  git:
+    repo: https://github.com/kipkoechAllan/yolo.git
+    dest: /vagrant/client
+  tags:
+    - client
+
+- name: Build client
+  command: docker build -t client_image /vagrant/client
+  tags:
+    - client
