@@ -14,3 +14,9 @@
     state: present
   tags:
     - common
+
+- name: Start and enable Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes 
